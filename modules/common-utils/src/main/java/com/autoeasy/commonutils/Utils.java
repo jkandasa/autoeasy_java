@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.log4j.Logger;
 
 import com.autoeasy.commonutils.collection.MethodMapper;
 import com.autoeasy.commonutils.collection.ReferenceDB;
@@ -13,7 +17,7 @@ import com.autoeasy.commonutils.collection.ReferenceDB;
  * Oct 13, 2013
  */
 public class Utils {
-
+	final static Logger _logger = Logger.getLogger(LOGGER.UTILS.toString());
 	public static void setFilesList(String dir, LinkedList<String> list, String fileFilter){
 		File xmlLocation = new File(dir);
 		if(xmlLocation.isDirectory()){
@@ -63,6 +67,20 @@ public class Utils {
 			keyValueMap.put(key,value);
 		}
 		return keyValueMap;
+	}
+	
+	public static String loadArguments(String line){
+		Matcher m = Pattern.compile("@(\\w+)@").matcher(line);
+	    StringBuffer sb = new StringBuffer();
+		while(m.find()) {
+			if(ReferenceDB.getCustomMapper(m.group(1)) != null){
+				 m.appendReplacement(sb, ReferenceDB.getCustomMapper(m.group(1)));
+			}else{
+				_logger.warn("Not match found for: "+m.group(0));
+			}
+		}
+		m.appendTail(sb);
+		return sb.toString();
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.autoeasy.cli;
 import java.util.HashMap;
 
 import com.autoeasy.commonutils.ArgMapper;
+import com.autoeasy.commonutils.Utils;
 import com.autoeasy.commonutils.collection.ReferenceDB;
 
 /**
@@ -49,22 +50,23 @@ public class CliArgs {
 		}
 		//Set cmd
 		if(keyValue.get(ArgMapper.cmd) != null){
-			setCmd(keyValue.get(ArgMapper.cmd));
+			setCmd(Utils.loadArguments(keyValue.get(ArgMapper.cmd)));
 		}
+		
 		//Set Pass String
 		if(keyValue.get(ArgMapper.passString) != null){
 			if(ReferenceDB.getCustomMapper(keyValue.get(ArgMapper.passString)) != null){
-				setPassString(ReferenceDB.getCustomMapper(keyValue.get(ArgMapper.passString)));
+				setPassString(Utils.loadArguments(ReferenceDB.getCustomMapper(keyValue.get(ArgMapper.passString))));
 			}else{
-				setPassString(keyValue.get(ArgMapper.passString));
+				setPassString(Utils.loadArguments(keyValue.get(ArgMapper.passString)));
 			}
 		}
 		//Set Fail String
 		if(keyValue.get(ArgMapper.failString) != null){
 			if(ReferenceDB.getCustomMapper(keyValue.get(ArgMapper.failString)) != null){
-				setFailString(ReferenceDB.getCustomMapper(keyValue.get(ArgMapper.failString)));
+				setFailString(Utils.loadArguments(ReferenceDB.getCustomMapper(keyValue.get(ArgMapper.failString))));
 			}else{
-				setFailString(keyValue.get(ArgMapper.failString));
+				setFailString(Utils.loadArguments(keyValue.get(ArgMapper.failString)));
 			}
 		}
 	}

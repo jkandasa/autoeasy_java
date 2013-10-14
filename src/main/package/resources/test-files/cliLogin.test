@@ -1,11 +1,2 @@
-#*********************************************************************************************
-# Here you can add CSV lines. There are 3 CSV parameter has to be added
-# CSV format: action,make.fail,arguments
-# action - user has to specify what type of action has to do by this line
-# make.fail - suppose if the specified action failed skip to run furhter actions on this file 
-# arguments - arguments are used by the action, if arguments has , (comma) out it on " quote,
-# it's allways good to put arguments on " quote. If you want to use " on your arguments 
-# ignore it by \"
-#*********************************************************************************************
-cli.create.connection,true,"hostname=localhost,port=22,user=autoeasy,password=autoeasy"
-cli.execute.command,true,"hostname=localhost,cmd=ls -alh,pass.string=,fail.string="
+cli.create.connection,true,"hostname=server1#|#port=22#|#user=autoeasy#|#password=autoeasy"
+cli.execute.command,true,"hostname=server1#|#cmd=ping -c4 @server1@#|#pass.string=0% packet loss#|#fail.string="
