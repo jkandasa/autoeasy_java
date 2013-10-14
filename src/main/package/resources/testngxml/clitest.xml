@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="CLI test">
+
+	<test name="Test-1">
+		<classes>
+			<class name="com.autoeasy.base.testng.AutoEasyTest">
+				<parameter name="csv.file" value="resources/test-files/cliLogin.test"/>
+				<methods>
+					<include name="csvTest"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+</suite>

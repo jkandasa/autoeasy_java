@@ -1,0 +1,2 @@
+cli.create.connection,true,"hostname=localhost,port=22,user=jeeva,password=jeeva"
+cli.execute.command,true,"hostname=localhost,cmd=ls -alh,pass.string=,fail.string="
