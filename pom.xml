@@ -6,6 +6,13 @@
 	<packaging>pom</packaging>
 	<name>autoeasy</name>
 	<description>autoeasy</description>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+	</properties>
+	
 	<modules>
 		<module>modules</module>
 	</modules>
@@ -77,8 +84,6 @@
 					</executions>
 					<configuration>
 						<descriptor>src/main/assembly/binary-deployment.xml</descriptor>
-						<source>1.6</source>
-    						<target>1.6</target>
 					</configuration>
 				</plugin>
 			</plugins>
